@@ -10,7 +10,7 @@ import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
 import { SectionHeader } from '@/components/section-header';
 import { Card, CardContent } from '@/components/ui/card';
-
+ 
 export const metadata: Metadata = {
   title: 'About',
   description:
