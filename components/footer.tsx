@@ -1,56 +1,64 @@
 import Link from 'next/link';
-import { Cloud } from 'lucide-react';
+import { HeartPulse } from 'lucide-react';
 
 const footerLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/methodology', label: 'Methodology' },
-  { href: '/insights', label: 'Insights' },
-  { href: '/survey', label: 'Take Survey' },
+  { href: '/healthcare-resources', label: 'Healthcare resources' },
+  { href: '/nearby-help', label: 'Nearby help' },
+  { href: '/how-it-works', label: 'How to use this portal' },
+  { href: '/about#privacy', label: 'About and privacy' },
 ];
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/60 bg-secondary/30">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-8 md:flex-row md:justify-between">
+    <footer className="border-t border-slate-200 bg-[#f3f8f6]">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
+        <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
           <div className="max-w-sm">
-            <Link href="/" className="flex items-center gap-2.5">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-                <Cloud className="h-4 w-4 text-white" />
-              </div>
-              <span className="text-base font-semibold tracking-tight">
-                CloudAdopt
+            <Link
+              href="/"
+              className="inline-flex min-h-11 items-center gap-3 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-800"
+            >
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-900 text-white">
+                <HeartPulse aria-hidden="true" className="h-5 w-5" />
               </span>
+              <span className="font-bold tracking-tight text-slate-950">Swasthya Connect</span>
             </Link>
-            <p className="mt-3 text-sm text-muted-foreground">
-              An academic research platform studying cloud computing adoption
-              in educational institutes.
+            <p className="mt-3 text-sm leading-relaxed text-slate-700">
+              Helping Communities Access Online Healthcare.
             </p>
           </div>
 
-          <nav className="flex flex-col gap-2.5">
-            <p className="text-sm font-medium text-foreground">Navigation</p>
-            {footerLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {link.label}
-              </Link>
-            ))}
+          <nav aria-label="Footer navigation">
+            <ul className="grid grid-cols-2 gap-x-8 gap-y-2 sm:gap-y-3">
+              {footerLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="inline-flex min-h-11 items-center rounded text-sm font-medium text-slate-700 underline-offset-4 hover:text-teal-950 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-800"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <a
+                  href="https://112.gov.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center rounded text-sm font-medium text-slate-700 underline-offset-4 hover:text-teal-950 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-800"
+                >
+                  Official emergency service 112 <span className="sr-only"> (opens in a new tab)</span>
+                </a>
+              </li>
+            </ul>
           </nav>
         </div>
 
-        <div className="mt-10 flex flex-col gap-3 border-t border-border/60 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-muted-foreground">
-            Academic Research Project · Responses are collected for research
-            purposes only.
+        <div className="mt-8 border-t border-slate-300 pt-5">
+          <p className="max-w-4xl text-sm leading-relaxed text-slate-700">
+            Swasthya Connect is an information portal, not a healthcare provider or government service. Information may change; confirm details with the official provider. This portal does not collect medical history.
           </p>
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} CloudAdopt. All rights reserved.
-          </p>
+          <p className="mt-3 text-xs text-slate-600">© {new Date().getFullYear()} Swasthya Connect</p>
         </div>
       </div>
     </footer>

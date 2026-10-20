@@ -1,17 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: {
-    // Dangerously allow production builds to successfully complete
-    // even if your project has type errors.
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  typescript: { tsconfigPath: 'tsconfig.next.json' },
   images: { unoptimized: true },
-  experimental: {
-    serverActions: true,
-  },
 };
 
 module.exports = nextConfig;
