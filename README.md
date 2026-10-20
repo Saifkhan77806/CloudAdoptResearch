@@ -4,7 +4,7 @@
 
 ## Production
 
-**Live application:** [https://project-ac4e83tk9-saif-khans-projects-9266d798.vercel.app](https://project-ac4e83tk9-saif-khans-projects-9266d798.vercel.app)
+**Live application:** [Live Deployment URL](https://project-three-woad.vercel.app/)
 
 Open the site on a supported browser and choose **Install app** to add Swasthya Connect to your device. The browser asks you to confirm installation. On iPhone or iPad, use **Share → Add to Home Screen**.
 
