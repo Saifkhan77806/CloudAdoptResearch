@@ -6,6 +6,15 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[];
 
+export type HealthcareResourceCategory =
+  | 'online-consultation'
+  | 'government-health-services'
+  | 'hospital-appointments'
+  | 'digital-health-records'
+  | 'health-schemes'
+  | 'emergency-support'
+  | 'facility-directory';
+
 export interface Database {
   public: {
     Tables: {
@@ -78,6 +87,50 @@ export interface Database {
           updated_at?: string;
         };
         Update: Partial<Database['public']['Tables']['app_settings']['Insert']>;
+      };
+      healthcare_resources: {
+        Row: {
+          id: string;
+          slug: string;
+          name: string;
+          description: string;
+          search_vector: string;
+          category: HealthcareResourceCategory;
+          provider_type: 'government' | 'ngo' | 'private';
+          official_url: string;
+          languages: string[];
+          cost_info: string | null;
+          eligibility_info: string | null;
+          access_instructions: string | null;
+          internet_requirement: string | null;
+          state_codes: string[];
+          is_verified: boolean;
+          is_published: boolean;
+          last_verified_at: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          slug: string;
+          name: string;
+          description: string;
+          category: HealthcareResourceCategory;
+          provider_type: 'government' | 'ngo' | 'private';
+          official_url: string;
+          languages?: string[];
+          cost_info?: string | null;
+          eligibility_info?: string | null;
+          access_instructions?: string | null;
+          internet_requirement?: string | null;
+          state_codes?: string[];
+          is_verified?: boolean;
+          is_published?: boolean;
+          last_verified_at?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: Partial<Database['public']['Tables']['healthcare_resources']['Insert']>;
       };
     };
   };

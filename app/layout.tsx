@@ -1,35 +1,24 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
-
-const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
 export const metadata: Metadata = {
   title: {
-    default: 'CloudAdopt — Cloud Computing Adoption in Education',
-    template: '%s — CloudAdopt',
+    default: 'Swasthya Connect — Helping Communities Access Online Healthcare',
+    template: '%s — Swasthya Connect',
   },
   description:
-    'A research survey exploring cloud computing adoption, usage, benefits, challenges, and future plans in educational institutes.',
-  keywords: [
-    'cloud computing',
-    'education',
-    'research survey',
-    'cloud adoption',
-    'educational institutes',
-  ],
-  authors: [{ name: 'CloudAdopt Research' }],
+    'Discover online healthcare services and learn how to access them. Helping Communities Access Online Healthcare.',
+  keywords: ['healthcare access', 'India', 'online healthcare', 'health services'],
+  authors: [{ name: 'Swasthya Connect' }],
   openGraph: {
-    title: 'CloudAdopt — Cloud Computing Adoption in Education',
-    description:
-      'A research survey exploring cloud computing adoption, usage, benefits, challenges, and future plans in educational institutes.',
+    title: 'Swasthya Connect — Helping Communities Access Online Healthcare',
+    description: 'Discover online healthcare services and learn how to access them.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CloudAdopt — Cloud Computing Adoption in Education',
-    description:
-      'A research survey exploring cloud computing adoption in educational institutes.',
+    title: 'Swasthya Connect — Helping Communities Access Online Healthcare',
+    description: 'Discover online healthcare services and learn how to access them.',
   },
 };
 
@@ -40,7 +29,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>{children}</body>
+      <body className="font-sans">{children}</body>
     </html>
   );
 }
