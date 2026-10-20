@@ -8,6 +8,12 @@ export const metadata: Metadata = {
   },
   description:
     'Discover online healthcare services and learn how to access them. Helping Communities Access Online Healthcare.',
+  manifest: '/manifest.json',
+  icons: {
+    icon: '/Heart%20Care%20Medical%20App%20Icon.png',
+    shortcut: '/Heart%20Care%20Medical%20App%20Icon.png',
+    apple: '/Heart%20Care%20Medical%20App%20Icon.png',
+  },
   keywords: ['healthcare access', 'India', 'online healthcare', 'health services'],
   authors: [{ name: 'Swasthya Connect' }],
   openGraph: {

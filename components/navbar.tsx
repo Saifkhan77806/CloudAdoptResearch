@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { HeartPulse, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { InstallAppButton } from '@/components/install-app-button';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
@@ -72,7 +73,8 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-2 md:flex">
+          <InstallAppButton />
           <Button asChild size="default" className="min-h-11">
             <Link href="/healthcare-resources">Find a service</Link>
           </Button>
@@ -113,6 +115,9 @@ export function Navbar() {
                 Find a service
               </Link>
             </Button>
+            <div className="mt-2">
+              <InstallAppButton />
+            </div>
           </nav>
         </div>
     </header>
