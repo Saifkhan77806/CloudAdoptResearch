@@ -1,7 +1,5 @@
--- Development-only sample data for checking directory layouts and filters.
--- All entries are fictional, explicitly marked as demos, and remain hidden
--- from public users because is_verified/is_published are false.
--- Never use this file to seed production.
+-- Fictional filter-testing records. They stay unverified and unpublished.
+-- These can be present in development databases but must never be published.
 insert into public.healthcare_resources (
   slug, name, description, category, provider_type, official_url,
   languages, cost_info, eligibility_info, access_instructions,
@@ -53,9 +51,9 @@ on conflict (slug) do update set
   is_published = false,
   last_verified_at = null;
 
--- Official public healthcare access resources. URLs and the claims below were
--- checked against government sources on 2026-10-20. These are real services,
--- not fictional demo data, and are safe for public display.
+-- Official and provider-maintained public healthcare access resources.
+-- URLs and displayed claims were checked against their providers on 2026-10-20.
+-- Do not alter verification flags without rechecking each source.
 insert into public.healthcare_resources (
   slug, name, description, category, provider_type, official_url,
   languages, cost_info, eligibility_info, access_instructions,
@@ -97,6 +95,54 @@ insert into public.healthcare_resources (
     array[]::text[], null, null,
     'Select a state and district on the official page. PIN code and Kendra code are also available as search fields.',
     'An internet connection is needed to use the online search page.', array[]::text[], true, true, now()
+  ),
+  (
+    'ors-government-hospital-appointments',
+    'Online Registration System (ORS) Hospital Appointments',
+    'The Government of India ORS portal supports online OPD appointment booking at participating government hospitals. The official portal explains the booking steps and shows a Hindi language version.',
+    'hospital-appointments', 'government', 'https://ors.gov.in/',
+    array['English', 'Hindi'], null, null,
+    'Use the official portal to choose a participating hospital, department, and available appointment. Hospital participation and slots can vary; confirm details with the hospital.',
+    'An internet connection and a registered mobile number or ABHA may be needed for appointment booking.',
+    array[]::text[], true, true, now()
+  ),
+  (
+    'abha-digital-health-records',
+    'ABHA and Personal Health Records',
+    'The National Health Authority describes the ABHA app as a personal health viewer for managing health records. ABDM explains that people control their Personal Health Records and consent is used when records are linked or shared.',
+    'digital-health-records', 'government', 'https://abha.abdm.gov.in/',
+    array[]::text[], null, null,
+    'Open the official ABHA portal to learn about creating or accessing an account. Review consent and privacy details on the official ABDM site. Swasthya Connect does not store these records.',
+    'An internet connection is needed to use the online portal.', array[]::text[], true, true, now()
+  ),
+  (
+    'pmjay-beneficiary-eligibility',
+    'Ayushman Bharat PM-JAY Beneficiary Portal',
+    'The National Health Authority beneficiary portal is listed by government sources for checking PM-JAY beneficiary eligibility and accessing beneficiary services. Eligibility and benefits depend on official scheme records.',
+    'health-schemes', 'government', 'https://beneficiary.nha.gov.in/',
+    array[]::text[], null,
+    'Eligibility depends on the official beneficiary record. Use the official portal or contact PM-JAY to confirm your status and current scheme information.',
+    'Open the official portal and follow its sign-in and verification steps.',
+    'An internet connection is needed to use the portal.', array[]::text[], true, true, now()
+  ),
+  (
+    'digiswasthya-rural-telemedicine-network',
+    'DigiSwasthya Foundation Telemedicine Network',
+    'DigiSwasthya Foundation describes a network of telemedicine centres where staff connect people with specialist doctors by video consultation. Its official centre page lists locations in Uttar Pradesh, Maharashtra, and Bihar; confirm current availability with the provider before travelling.',
+    'online-consultation', 'ngo', 'https://www.digiswasthya.org/network',
+    array[]::text[], null, null,
+    'Open the provider’s current centre list and contact the organisation to confirm the location and availability before travelling.',
+    'Internet access may be needed for online information; ask the provider about access at a centre.',
+    array['UP', 'MH', 'BR'], true, true, now()
+  ),
+  (
+    'practo-online-consultation',
+    'Practo Online Doctor Consultation',
+    'Practo’s official website offers online consultations with doctors. This is a private service; consultation options, doctor availability, and charges are shown by the provider and can change.',
+    'online-consultation', 'private', 'https://www.practo.com/consult',
+    array[]::text[], 'Private provider; check current consultation charges on the provider website.', null,
+    'Open the provider site to review available doctors, consultation options, and current charges before booking.',
+    'An internet connection is needed to use online consultation.', array[]::text[], true, true, now()
   )
 on conflict (slug) do update set
   name = excluded.name,
